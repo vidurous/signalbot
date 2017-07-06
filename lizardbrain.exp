@@ -54,6 +54,7 @@ set found [regexp -nocase {Body: @Aaron (.*)} $message match hit]
    } else {		
       send_user "\n[color 5 {SIGNALBOT:: }][color 3 {FAILURE TO MATCH HIT... }][color 2 (OK)]\n"		
       send_user "\n"		
+      exec expect $env(HOME)$env(REPO)/lizardbrain.exp &
       exit 0		
 }		
 		
