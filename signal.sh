@@ -1,11 +1,10 @@
 #!/bin/bash
 
 # bash format helper script
-DATE2=$(date +%Y-%m-%dT%H:%M.%3NZ)
-#DATE=$(echo $(($(date +%s%N)/1000000)))
 DATE=$(date +%s%3N)
+DATE2=$(date +%Y-%m-%dT%H:%M.%3NZ)
 export VERSION="Version, 0.5.6"
-echo "$DATE ($DATE2)" > /home/aathomas/gitlab/signal-bot/.signalbot.date
-/usr/local/bin/signal-cli -u +19192689438 receive|grep -i Body: -B7 >> /home/aathomas/gitlab/signal-bot/.signalbot.tmp
-sed -i 's/“//' /home/aathomas/gitlab/signal-bot/.signalbot.tmp && sed -i 's/”//' /home/aathomas/gitlab/signal-bot/.signalbot.tmp
-#exec /usr/bin/expect /home/aathomas/gitlab/signal-bot/lizardbrain.exp
+export REPO="gitlab/signal-bot"
+echo "$DATE ($DATE2)" > $HOME/$REPO/.signalbot.date
+/usr/local/bin/signal-cli -u +#-###-###-#### receive|grep -i Body: -B7 >> $HOME/$REPO/signal-bot/.signalbot.tmp
+sed -i 's/“//' $HOME/$REPO/.signalbot.tmp && sed -i 's/”//' $HOME/$REPO/.signalbot.tmp
